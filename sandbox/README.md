@@ -44,3 +44,11 @@
 * **View specific secret value**
 
 ``gcloud secrets versions access latest --secret="[GOOGLE SECRET VALUE]" --project=[GCP_PROJECT_ID]``
+
+* * 10/29/26 * *
+
+cd ~/auth
+gcloud functions deploy sandbox-token-manager \
+  --gen2 --region=us-central1 --runtime=python312 \
+  --source=. --entry-point=token_manager_handler --trigger-http \
+  --set-env-vars=GOOGLE_CLOUD_PROJECT=log-it-460202
